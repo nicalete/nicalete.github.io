@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="西瓜创作平台-提供一站式新媒体内容创作与分发服务，涵盖图文、短视频及直播内容创作工具，助力创作者实现内容变现与品牌增长。">
+    <meta name="keywords" content="西瓜创作平台,内容创作工具,新媒体运营,自媒体平台,内容分发">
+    <title>西瓜创作平台-一站式新媒体内容创作与分发服务</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #ff6b00;
+            --primary-hover: #e65c00;
+            --secondary-color: #2c3e50;
+            --text-main: #333333;
+            --text-light: #666666;
+            --bg-body: #f8f9fa;
+            --bg-card: #ffffff;
+            --border-color: #e1e4e8;
+            --spacing-unit: 16px;
+            --container-width: 1200px;
+            --header-height: 70px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Layout Utilities */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        .section {
+            padding: 60px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+        }
+
+        .section-header p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        /* Header & Nav */
+        header {
+            height: var(--header-height);
+            background-color: var(--bg-card);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--secondary-color);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--text-main);
+            position: relative;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-block;
+        }
+
+        .btn-outline {
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(255, 107, 0, 0.05);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            border: 1px solid var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            border-color: var(--primary-hover);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #fff5f0 0%, #ffffff 100%);
+            padding: 80px 0 100px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            color: var(--primary-color);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item h3 {
+            font-size: 2rem;
+            color: var(--secondary-color);
+        }
+
+        .stat-item p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin: 0;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid var(--border-color);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+        }
+
+        .icon-box {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 107, 0, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+            color: var(--secondary-color);
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Content Types */
+        .content-types {
+            background-color: #fff;
+        }
+
+        .type-row {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+
+        .type-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .type-row.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .type-image {
+            flex: 1;
+            height: 300px;
+            background-color: #eee;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .type-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .type-content {
+            flex: 1;
+        }
+
+        .type-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+
+        .type-content ul {
+            margin-top: 20px;
+        }
+
+        .type-content li {
+            margin-bottom: 12px;
+            padding-left: 20px;
+            position: relative;
+            color: var(--text-light);
+        }
+
+        .type-content li::before {
+            content: "•";
+            color: var(--primary-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* How to Start */
+        .steps-container {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-top: 40px;
+        }
+
+        .steps-container::before {
+            content: "";
+            position: absolute;
+            top: 25px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: var(--border-color);
+            z-index: 0;
+        }
+
+        .step-item {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            flex: 1;
+            padding: 0 10px;
+        }
+
+        .step-circle {
+            width: 50px;
+            height: 50px;
+            background-color: var(--bg-card);
+            border: 2px solid var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+
+        .step-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: var(--secondary-color);
+        }
+
+        .step-item p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* FAQ */
+        .faq-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+
+        .faq-answer {
+            padding: 0 20px 20px;
+            color: var(--text-light);
+            display: none;
+            border-top: 1px solid transparent;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+            padding-top: 15px;
+            border-top-color: var(--border-color);
+        }
+
+        .faq-item.active .faq-question {
+            color: var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: #b0b8c1;
+            padding: 60px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-brand p {
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 30px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-wrap: wrap;
+            }
+
+            nav {
+                order: 3;
+                width: 100%;
+                margin-top: 15px;
+            }
+
+            nav ul {
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+
+            .header-actions {
+                order: 2;
+                margin-left: auto;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .type-row, .type-row.reverse {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .steps-container {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .steps-container::before {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#ff6b00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 17L12 22L22 17" stroke="#ff6b00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 12L12 17L22 12" stroke="#ff6b00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                西瓜创作平台
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#">创作工具</a></li>
+                    <li><a href="#">变现中心</a></li>
+                    <li><a href="#">创作者学院</a></li>
+                    <li><a href="#">帮助中心</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="#" class="btn btn-outline">登录</a>
+                <a href="#" class="btn btn-primary">立即入驻</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>让创作更简单<br><span>让才华被看见</span></h1>
+                <p>西瓜创作平台致力于为自媒体人、内容创作者提供一站式的新媒体内容生产、分发与管理工具。从图文到短视频，助你轻松打造个人品牌，实现内容变现。</p>
+                <div style="display: flex; justify-content: center; gap: 15px;">
+                    <a href="#" class="btn btn-primary" style="padding: 12px 30px; font-size: 1.1rem;">开始创作</a>
+                    <a href="#" class="btn btn-outline" style="padding: 12px 30px; font-size: 1.1rem;">了解机制</a>
+                </div>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <h3>10W+</h3>
+                        <p>日活创作者</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>500W+</h3>
+                        <p>累计产出内容</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>1亿+</h3>
+                        <p>月度曝光量</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>全方位创作支持</h2>
+                    <p>无论是图文博主还是视频达人，我们都有适合你的工具</p>
+                </div>
+                <div class="features-grid">
+                    <article class="feature-card">
+                        <div class="icon-box">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                        </div>
+                        <h3>智能编辑器</h3>
+                        <p>支持多格式排版、实时预览、云端保存。内置一键美化功能，让图文内容更具专业质感。</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="icon-box">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                        </div>
+                        <h3>多端分发</h3>
+                        <p>一次发布，全网同步。支持接入主流社交平台接口，自动分发至微信、微博、头条等渠道。</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="icon-box">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                        </div>
+                        <h3>收益管理</h3>
+                        <p>完善的广告分成与赞赏系统，数据可视化报表，让你清晰掌握每一笔创作收益。</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content Types Showcase -->
+        <section class="section content-types">
+            <div class="container">
+                <div class="section-header">
+                    <h2>多元内容生态</h2>
+                    <p>无论你的内容形式是什么，都能在这里找到舞台</p>
+                </div>
+
+                <div class="type-row">
+                    <div class="type-image">
+                        <img src="https://picsum.photos/seed/xigua_blog/600/400" alt="图文创作示例">
+                    </div>
+                    <div class="type-content">
+                        <h3>深度图文专栏</h3>
+                        <p>适合知识分享、观点表达、小说连载等长尾内容。提供丰富的排版模板与章节管理功能，支持粉丝订阅与打赏。</p>
+                        <ul>
+                            <li>支持 Markdown 与富文本混合编辑</li>
+                            <li>章节自动生成与目录导航</li>
+                            <li>评论互动与粉丝群组管理</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="type-row reverse">
+                    <div class="type-image">
+                        <img src="https://picsum.photos/seed/xigua_video/600/400" alt="短视频创作示例">
+                    </div>
+                    <div class="type-content">
+                        <h3>短视频制作</h3>
+                        <p>针对短视频创作者的一站式解决方案。支持手机端与PC端剪辑，内置海量素材库与特效滤镜，快速提升视频质量。</p>
+                        <ul>
+                            <li>智能剪辑与自动字幕生成</li>
+                            <li>热门BGM与音效库</li>
+                            <li>一键生成封面与话题标签</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How to Start -->
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>三步开启创作之旅</h2>
+                </div>
+                <div class="steps-container">
+                    <div class="step-item">
+                        <div class="step-circle">1</div>
+                        <h4>注册账号</h4>
+                        <p>填写基本信息，完善个人资料，选择你的创作领域。</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-circle">2</div>
+                        <h4>选择工具</h4>
+                        <p>根据内容类型，选择图文编辑器或视频剪辑工具开始创作。</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-circle">3</div>
+                        <h4>发布与变现</h4>
+                        <p>一键发布作品，接入广告收益，通过优质内容获得回报。</p>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 50px;">
+                    <a href="#" class="btn btn-primary">免费注册账号</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="section" style="background-color: #fff;">
+            <div class="container" style="max-width: 800px;">
+                <div class="section-header">
+                    <h2>常见问题</h2>
+                </div>
+                
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        新手创作者如何快速上手？
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        我们提供详细的创作学院教程，包括新手指南、热门选题分析、排版技巧及变现攻略。您也可以在社区查看其他优秀创作者的经验分享。
+                    </div>
+                </div>
+
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        发布内容后多久能获得收益？
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        内容发布后，只要符合平台规范并获得一定量的阅读或播放量，即可参与广告分成计划。具体结算周期请参考收益中心的相关规则。
+                    </div>
+                </div>
+
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        支持哪些内容分发渠道？
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        平台目前支持一键同步至西瓜视频、今日头条及微信公众号等主流平台，后续将逐步开放更多渠道接口。
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7L12 12L22 7L12 2Z"></path><path d="M2 17L12 22L22 17"></path><path d="M2 12L12 17L22 12"></path></svg>
+                        西瓜创作平台
+                    </h3>
+                    <p>致力于构建开放、包容的新媒体创作生态，为每一位有才华的创作者提供展示与变现的机会。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>关于我们</h4>
+                    <ul>
+                        <li><a href="#">平台介绍</a></li>
+                        <li><a href="#">加入团队</a></li>
+                        <li><a href="#">联系方式</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>创作者服务</h4>
+                    <ul>
+                        <li><a href="#">创作指南</a></li>
+                        <li><a href="#">收益政策</a></li>
+                        <li><a href="#">违规处理</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>支持</h4>
+                    <ul>
+                        <li><a href="#">帮助中心</a></li>
+                        <li><a href="#">意见反馈</a></li>
+                        <li><a href="#">隐私协议</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 西瓜创作平台 版权所有 | 仅供演示使用</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleFaq(element) {
+            // Close other items
+            const allItems = document.querySelectorAll('.faq-item');
+            allItems.forEach(item => {
+                if (item !== element) {
+                    item.classList.remove('active');
+                }
+            });
+            // Toggle current
+            element.classList.toggle('active');
+        }
+    </script>
+</body>
+  </html>
